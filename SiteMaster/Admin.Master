@@ -1,0 +1,172 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="~/SiteMaster/Admin.Master" Inherits="AMCComplaintSystem.SiteMaster.Admin" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>Admin Dashboard</title>
+    <style>
+        /* Reset default styles and prevent unwanted scrolling */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            /*overflow: hidden;*/ /* Prevent page scrolling */
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            overflow-y: auto; /* Allows scrolling inside sidebar */
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 20px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            text-align: center;
+        }
+
+            .sidebar ul li a {
+                color: white;
+                text-decoration: none;
+                display: block;
+                padding: 10px;
+                display: flex;
+                align-items: center;  
+
+                color: inherit;
+                padding: 8px 16px;
+            }
+
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+
+     
+        .submenu {
+            display: none;
+            background-color: #444;
+        }
+
+        .has-submenu:hover > .submenu {
+            display: block;
+        }
+
+        .submenu li a {
+            padding-left: 20px;
+        }
+
+        /* Main Content Area */
+        .content {
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px); 
+            background-color: #f4f4f4;
+            min-height: 100vh;
+            overflow-y: auto; 
+            box-sizing: border-box;
+        }
+  /* Custom Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #888;
+            border-radius: 4px;
+        }
+                .sidebar .icon {
+    margin-right: 10px;  
+    font-size: 18px; 
+}
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #555;
+        }
+
+        ::-webkit-scrollbar-horizontal {
+            display: none;
+        }
+      
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+       
+        <div class="sidebar">
+            <h2>Admin Panel</h2>
+            <ul>
+                <li><a href="../AdminPages/AdminDashBoard.aspx"><span class="icon">📊</span>Dashboard</a></li>
+                <li class="has-submenu">
+                    <a href="#"><span class="icon">👤</span>User Management</a>
+                    <ul class="submenu">
+                        <li><a href="../AdminPages/AdminViewAllUsers.aspx">👥 View All Users</a></li>
+                        <li><a href="../AdminPages/AdminUpdateUserRoll.aspx">🔧 Update User Roles</a></li>
+                        <li><a href="../AdminPages/AdminDeleteUsers.aspx">❌ Delete Users</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#"><span class="icon">📑</span>Complaints</a>
+                    <ul class="submenu">
+                        <li><a href="../AdminPages/AdminViewComplaints.aspx">👀 View Complaints</a></li>
+                        <li><a href="../AdminPages/AdminAssignedComplaints.aspx">📝 Assign Complaints</a></li>
+                    </ul>
+                </li>
+                <li><a href="../AdminPages/AdminViewFeedback.aspx"><span class="icon">💬</span>Feedbacks</a></li>
+                <li class="has-submenu">
+                    <a href="#"><span class="icon">📈</span>Reports</a>
+                    <ul class="submenu">
+                        <li class="has-submenu">
+                            <a href="#">📍 Pending</a>
+                            <ul class="submenu">
+                                <li><a href="../AdminPages/AdminPendingHardware.aspx">🔧 Hardware</a></li>
+                                <li><a href="../AdminPages/AdminPendingSoftware.aspx">💻 Software</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#">⏳ In Progress</a>
+                            <ul class="submenu">
+                                <li><a href="../AdminPages/AdminInprogressHardware.aspx">🔧 Hardware</a></li>
+                                <li><a href="../AdminPages/AdminInprogressSoftware.aspx">💻 Software</a></li>
+                            </ul>
+                        </li>
+                        <li class="has-submenu">
+                            <a href="#">✅ Completed</a>
+                            <ul class="submenu">
+                                <li><a href="../AdminPages/AdminCompleteHardware.aspx">🔧 Hardware</a></li>
+                                <li><a href="../AdminPages/AdminCompleteSoftware.aspx">💻 Software</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><a href="../LoginForm.aspx"><span class="icon">🚪</span>Logout</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="content">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+    </form>
+</body>
+</html>

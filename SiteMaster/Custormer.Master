@@ -1,0 +1,242 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Custormer.master.cs" Inherits="AMCComplaintSystem.SiteMaster.Custormer" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>AMC Complaint/Feedback Portal</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+           /* background-color: #f0f0f5;*/
+            color: #333;
+            display: flex;
+            flex-direction: row;
+            height: 100vh;
+        }
+
+
+        .dashboard-container {
+            width: 100%;  
+            height: auto;  
+            max-width: unset;  
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: stretch;
+            gap: 15px;
+        }
+        
+
+        header {
+           /* background-color: #4a76a8;*/
+            color: #7d1ee3;
+            padding: 10px;
+            text-align: center;
+        }
+
+        
+        nav {
+            width: 267px; 
+            background-color: #0b104f;
+            position: fixed;
+            height: 100%;
+            padding-top: 20px;
+            top: 0px;
+            left: 0px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            width: 100%;
+            position: relative;
+        }
+
+            nav ul li a {
+                text-decoration: none;
+                color: #f7f0f0;
+                padding: 15px;
+                display: block;
+                width: 90%;
+                box-sizing: border-box;
+                align-items: center;
+                padding: 8px 16px;
+            }
+
+                nav ul li a:hover {
+                    background-color: #3b5f8e;
+                }
+
+       
+        .dropdown-content {
+            display: none;
+            background-color: #3b5f8e;
+        }
+
+        nav ul li:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown-content a {
+            padding-left: 30px;  
+        }
+
+        
+        .submenu {
+            display: none;
+            background-color: #2e4b71;
+        }
+
+        .dropdown-content li:hover .submenu {
+            display: block;
+        }
+
+        .submenu a {
+            padding-left: 45px;  
+        }
+
+        
+      .content {
+    margin-left: 250px;
+    padding: 20px;
+    width: 100%;  
+    max-width: 100%;  
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    min-width: 750px; /* Prevent it from getting smaller than 750px */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    overflow-y: auto;
+    overflow-x: hidden;  
+}
+
+@media (max-width: 768px) {
+    nav {
+        position: relative;   
+        width: 100%;         
+        height: auto;        
+        padding-top: 10px;    
+    }
+
+    .content {
+        margin-left: 0;       
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        padding: 10px;     
+    }
+
+    nav ul li a {
+        text-align: center;   
+    }
+}
+
+
+
+        
+        
+.user-panel {
+    background-color: #2e4b71;  
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 10px;  
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.user-panel p {
+    font-size: 24px;  
+    color: #ffffff;  
+    margin: 0;  
+    font-weight: bold;  
+}
+
+
+
+    </style>
+</head>
+
+<body>
+    <form id="form1" runat="server">
+       
+   
+    <nav>
+        <div class="user-panel">
+            <p>User Panel</p> 
+        </div>
+    <ul>
+        <li><a href="../CustormerPages/CustomerDashboard.aspx">📊 Home</a></li>
+        <li><a href="../CustormerPages/ForwardComplain.aspx">📑 Forward Complaint</a></li>
+       
+
+
+        <li class="dropdown">
+    <a href="#">📑 Send Feedbacks</a>
+    <ul class="dropdown-content">
+        <li><a href="../CustormerPages/CustormerSendFeedbackHardware.aspx">🔧 Hardware</a></li>
+        <li><a href="../CustormerPages/CustormerSendFeedbackSoftware.aspx">💻 Software</a></li>
+    </ul>
+</li>
+
+
+
+
+
+
+
+
+        <li class="dropdown">
+            <a href="#">📈 Reports</a>
+            <ul class="dropdown-content">
+                <li><a href="#">📍 Pending Jobs</a>
+                    <ul class="submenu">
+                        <li><a href="../CustormerPages/CustormerPendingHardware.aspx">🔧 Hardware</a></li>
+                        <li><a href="../CustormerPages/CustormerPendingSoftware.aspx">💻 Software</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">⏳ In Progress Jobs</a>
+                    <ul class="submenu">
+                        <li><a href="../CustormerPages/CustormerInprogressHardware.aspx">🔧 Hardware</a></li>
+                        <li><a href="../CustormerPages/CustormerInprogressSoftware.aspx">💻 Software</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">✅ Completed Jobs</a>
+                    <ul class="submenu">
+                        <li><a href="../CustormerPages/CustormerCompletedHardware.aspx">🔧 Hardware</a></li>
+                        <li><a href="../CustormerPages/CustormerCompletedSoftware.aspx">💻 Software</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+       <%-- <li><a href="../LoginForm.aspx" style="background-color: red;">💬 Logout</a></li>--%>
+         <li><a href="../LoginForm.aspx">💬 Logout</a></li>
+    </ul>
+</nav>
+
+
+        <div class="content">
+            <header>
+             <%--   <h1>User Dashboard</h1>--%>
+            </header>
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+    </form>
+</body>
+</html>
